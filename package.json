@@ -1,0 +1,22 @@
+{
+  "name": "orangehrm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MandicZeljko/OrangeHRM.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MandicZeljko/OrangeHRM/issues"
+  },
+  "homepage": "https://github.com/MandicZeljko/OrangeHRM#readme",
+  "dependencies": {
+    "cypress": "^9.7.0"
+  }
+}
