@@ -5,6 +5,7 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 })
 describe('Create system user', () => {
     it('adds new user', () => {
+        const user = 'admin2'
         cy.intercept('GET', '/orangehrm/web/index.php/api/v2/admin/users?limit=50&offset=0&sortField=u.userName&sortOrder=ASC').as('adminUser')
         cy.Login()
         cy.get(sidebar.sidebarview,).find('a').contains('Admin').click()
@@ -23,12 +24,13 @@ describe('Create system user', () => {
         cy.get(':nth-child(3) > .oxd-input-group > :nth-child(2) > .oxd-select-wrapper > .oxd-select-text').click()
         cy.get('.oxd-select-dropdown').contains('Enabled').click()
         cy.get('label').contains('Username').should('be.visible')
-        cy.get(':nth-child(4) > .oxd-input-group > :nth-child(2) > .oxd-input').type('admin2')
+        cy.get(':nth-child(4) > .oxd-input-group > :nth-child(2) > .oxd-input').type(user)
         cy.get('label').contains('Password').should('be.visible')
         cy.get('.user-password-cell').type('Admin1234.')
         cy.get('.oxd-chip').should('be.visible').should('have.css', 'background-color', 'rgb(147, 180, 15)')
         cy.get(':nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-input').type('Admin1234.')
         cy.get('.oxd-button--ghost').contains('Cancel').should('be.enabled')
         cy.get('.oxd-button--secondary').contains('Save').should('be.enabled').click()
+        cy.get('orangehrm-container',{timeout:10000}).contains('admin2').should('be.visible')
     })
 })

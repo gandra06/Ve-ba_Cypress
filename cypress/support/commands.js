@@ -26,7 +26,7 @@ Cypress.Commands.add("Login", () => {
   })
   cy.wait('@employees')
   cy.wait('@shortcuts')
-  cy.wait('@leaves')
+ // cy.wait('@leaves')
   cy.wait('@subunit')
   cy.wait('@location')
   cy.url().should('include', '/dashboard/index')
