@@ -2,10 +2,11 @@ const { defineConfig } = require('cypress')
 
 module.exports = defineConfig({
   e2e: {
+    chromeWebSecurity: false,
     baseUrl: 'http://localhost/orangehrm',
     retries: {
-      runMode: 1,
-      openMode: 1,
+      runMode: 0,
+      openMode: 0,
     },
     screenshotOnRunFailure: true,
     screenshotsFolder: 'cypress/screenshots',
@@ -18,8 +19,15 @@ module.exports = defineConfig({
     videoCompression: 32,
     videosFolder: 'cypress/videos',
     videoUploadOnPasses: true,
+   // uncaught:'exception' ,
     setupNodeEvents(on, config) {
+     
       return require('./cypress/plugins/index.js')(on, config)
+     
+     
     },
+  
   },
+  
 })
+
