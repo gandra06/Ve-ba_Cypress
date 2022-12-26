@@ -1,4 +1,7 @@
 {
+  "browser": {
+    "[module-name]": false
+  },
   "name": "orangehrm",
   "version": "1.0.0",
   "description": "",
@@ -17,6 +20,9 @@
   },
   "homepage": "https://github.com/MandicZeljko/OrangeHRM#readme",
   "devDependencies": {
-    "cypress": "^11.1.0"
+    "cypress": "^11.1.0",
+    "cypress-localstorage-commands": "^2.2.2",
+    "cypress-xpath": "^2.0.1",
+    "start-server-and-test": "^1.15.2"
   }
 }

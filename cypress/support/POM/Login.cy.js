@@ -1,6 +1,6 @@
 const login = {
-    username : '.oxd-form-row:nth-child(2)',
-    password : '.oxd-form-row:nth-child(3)',
-    login : '.oxd-button'
+    usernameFld : '.oxd-form-row:nth-child(2)',
+    passwordFld : '.oxd-form-row:nth-child(3)',
+    loginBtn : '.oxd-button'
 }
 export { login }

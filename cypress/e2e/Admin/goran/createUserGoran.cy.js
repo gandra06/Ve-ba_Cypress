@@ -42,12 +42,22 @@ describe('Create system user', () => {
         //})
         cy.contains('User1')  
          .parents('.oxd-table-row')
-         .find('.oxd-icon bi-trash')
+         .find('button').first()
          .click()
+            //cy.on('window:confirm', (str) =>
+        //{
+            //expect(str).to.equal('Are you Sure?')
+        //})
+
+        cy.get('.oxd-button--label-danger').contains('Yes, Delete').click()
+         //cy.get('.orangehrm-modal-footer',{timeout:10000}).contans('Yes, Delete').click()
+
         //cy.get(':nth-child('User1')) > .oxd-table-row > :nth-child(5) > .oxd-table-cell-actions > :nth-child(1) > .oxd-icon').click()
         //cy.get('.oxd-button--label-danger').click()
         //cy.intercept('DELETE', '/localhost/orangehrm/web/index.php/api/v2/admin/users').as('deleteUser')
-        cy.get('.orangehrm-container',{timeout:10000}).contains('User1').should('not.be.visible')
+        cy.contains('admin').should('be.visible')
+        cy.contains('User1').should('not.be.visible')
+        
         
         //cy.wait('@deleteUser')
     })
