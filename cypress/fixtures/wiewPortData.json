@@ -1,0 +1,14 @@
+[
+    {
+        "url": "http://localhost/orangehrm/web/index.php/auth/login"
+    },
+    {
+        "url": "http://localhost/orangehrm/web/index.php/dashboard/index"
+    },
+    {
+        "url": "http://localhost/orangehrm/web/index.php/time/viewEmployeeTimesheet"
+
+    }
+    
+
+]
