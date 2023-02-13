@@ -1,0 +1,35 @@
+[
+
+{
+    "firstName": "Mary",
+    "middleName": "JM",
+    "lastName": "Popins",
+    "empPicture": null,
+    "employeeId": "1699"
+}, 
+{
+    "firstName": "Goran",
+    "middleName": "GA",
+    "lastName": "Andrejevic",
+    "empPicture": null,
+    "employeeId": "1700"
+},
+{
+    "firstName": "Marko",
+    "middleName": "MM",
+    "lastName": "Markovic",
+    "empPicture": null,
+    "employeeId": "1701"
+},
+{
+    "firstName": "Lana",
+    "middleName": "LK",
+    "lastName": "Kostic",
+    "empPicture": null,
+    "employeeId": "1702"
+
+}
+]
+ 
+
+

@@ -1,7 +1,8 @@
 //import { sidebar } from '../../../support/POM/sidebar.cy'
 import { hrmMsg } from '../../../support/POM/orangeHRMMsg.cy'
 import { hrmEditButton } from '../../../support/POM/orangeHRMbtn.cy'
-import { capitalize } from 'cypress/types/lodash'
+
+
 
 
 
@@ -10,23 +11,28 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 })
     
 describe('Time', () => {
+
+  let dayjs = require("dayjs")
+  let cYear = dayjs().format("YYYY")
+  let cMonth = dayjs().format("MMMM")
+  let cDay = dayjs().format("DD")
    
   before(() => {
- 
+  cy.visit('/');
   cy.loginForm();
   //cy.interceptLogin()
   
   cy.saveLocalStorage();
-  });
+  })
 
   beforeEach(() => {
-  //cy.Login('admin' , 'Yorad2906')
+ 
   
   cy.restoreLocalStorage();
   cy.Time();
   cy.url().should('include', '/viewEmployeeTimesheet');
   cy.saveLocalStorage();
-  });
+  })
 
 
 
@@ -45,37 +51,8 @@ describe('Time', () => {
            
         cy.contains('h6','Timesheet for Toma Nikolic').should('exist').and('be.visible')
            
-    
-    
-        
-
-            
-
-            //cy.intercept('GET', '/orangehrm/web/index.php/api/v2/leave/workweek?model=indexed').as('dateInput')
-            //cy.intercept('GET', '/orangehrm/web/index.php/api/v2/leave/holidays?fromDate=2022-01-01&toDate=2022-12-31').as('employeeEntries')
-            //it('check employee timesheet primer 1', () => {
-            //cy.get('.oxd-date-input > .oxd-icon').click()//click on the calendar icon
-            //cy.get('.oxd-date-input-calendar"]', {force:true}).invoke('show') 
-            //cy.get('button').then(($btn) => {
-                //if ($btn.hasClass('active')) {
-                  // do something if it's active
-                //} else {
-                  // do something else
-                //}
-              //})
-      
-
-            //cy.wait('@dateImput')
-            //cy.intercept('GET', '/orangehrm/web/index.php/api/v2/time/employees/timesheets/2/entries').as('employeeEntries')
-            //cy.wait('@employeeEntries')
-           
-            //})
-            //it('edit employee timesheet', () => {
-         
-         
-            //cy.contains('button','Create Timesheet').click()
         cy.get('.oxd-text').then(($text) => {
-          if ($text.text().includes('No Timesheets Found')) 
+          if ($text.text().includes('No Timesheets Found'))
           {
                 //Create timesheet
             cy.get('.oxd-button').contains('Create Timesheet').should('exist').and('be.visible').click()
@@ -132,7 +109,7 @@ describe('Time', () => {
       })
       it('addDataToTimesheet',() => {
 
-        cy.restoreLocalStorage();
+        //cy.restoreLocalStorage();
         cy.SelectEmployee()
         //cy.CreateTimeSheet()
         cy.get('.oxd-text').then(($text) => {
@@ -191,25 +168,50 @@ describe('Time', () => {
 
 
 
-        it('change the date',() => {  
-          cy.restoreLocalStorage(); 
-          
+        it.only('change the date',() => {  
+          //cy.restoreLocalStorage(); 
+          cy.get('.oxd-autocomplete-text-input > input').should('exist').and('be.visible').type('Toma')
            
+            
+          cy.contains('.oxd-autocomplete-option > span','Toma Nikolic',{timeout:10000}).should('be.visible').click()
+            
+           cy.contains(hrmEditButton.timeSheetBtn ,'View').should('be.visible').click()//vuce btn iz POM-a
+           cy.contains('h6','Timesheet for Toma Nikolic').should('exist').and('be.visible')
+           cy.pickDate('Timesheet Period')
+           .click()
+            //cy.contains('.orangehrm-timeperiod-picker > .oxd-text' ,'Timesheet Period').next().next().click()
 
-            cy.contains('orangehrm-timeperiod-picker' ,'Timesheet Period').next().next().click()
+            //cy.get('.orangehrm-timeperiod-picker > .oxd-text')
+              cy.get('.oxd-date-input-calendar').should('exist').and('be.visible')
+              //.should('be.hidden')
+              //.invoke ('show')
+              //.invoke('text')
+              .invoke('prop', 'innerText')
 
-             
-              cy.get('oxd-date-input-calendar')
-              .should('be.hidden')
-              .invoke ('show')
-              .invoke('text')
-              cy.xpath('//*[text()[contains(.,"December")]]').click()
+              cy.get('.oxd-calendar-selector-month').click()
+              cy.contains('December').click()
+              
+              cy.get('.oxd-calendar-selector-year').click()
+              cy.contains('2022').click()
+              cy.get(':nth-child(21) > .oxd-calendar-date').click() 
+              cy.url().should('include', '/employeeId/6');
 
-              cy.get('.oxd-calendar-selector-year-selected > .oxd-icon')//.click()
-              cy.select('2022').click()
-              //cy.get('.oxd-calendar-selector-month-selected > .oxd-icon').click()  
-              //cy.select('November')//.click()
-              cy.select(':nth-child(21) > .oxd-calendar-date')//.click()  
+              
+              var dt = new Date('2022-12-21')  //current date of week
+              var currentWeekDay = dt.getDay();
+              var lessDays = currentWeekDay == 0 ? 6 : currentWeekDay-1
+              var wkStart = new Date(new Date(dt).setDate(dt.getDate()- lessDays));
+              var wkEnd = new Date(new Date(wkStart).setDate(wkStart.getDate()+6));
+              cy.log(wkStart.wkEnd)
+              // Assert that date picked is right
+        cy.get('input[placeholder="yyyy-mm-dd"]')//.first()
+        .invoke('prop','_value').then(value => {
+            let cMonth = dayjs().format('MM')
+            if (cMonth == '01') {
+                let cYear = dayjs().format('YYYY')
+                expect(value).to.be.eq(cYear + '-' + cMonth + '-' + '01')
+            } else {expect(value).to.be.eq(cYear + '-' + cMonth + '-' + '01')}
+        })
         })     
                 
        

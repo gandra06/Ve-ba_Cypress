@@ -35,33 +35,42 @@ describe('Time', () => {
       cy.contains(hrmEditButton.timeSheetBtn ,'View')
       .should('be.visible')
       .click() //vuce btn iz POM-a
-           
+      
       cy.contains('h6','Timesheet for Toma Nikolic')
       .should('exist').and('be.visible')
-      cy.get('.oxd-date-input').find('input').eq(0).click()
+      cy.get('.oxd-date-input').find('input').eq(0).click()    //date picker
             cy.get('.oxd-calendar-wrapper').should('exist')
-            cy.get('.oxd-calendar-wrapper').find('li').contains('December').should('be.visible')
-            cy.get('.oxd-calendar-wrapper').find('li').contains('2022').should('be.visible')
-            cy.get('.oxd-calendar-wrapper').find('button').eq(1).click()
-            cy.get('.oxd-calendar-wrapper').find('li').then(($calendar) => { 
-                if($calendar.text().includes('February')) { 
-        
-                } 
-                else {
-                    cy.get('.oxd-calendar-wrapper').find('button').eq(1).click()
+            cy.get('.oxd-calendar-selector-month').should('be.visible').click()
+            cy.get('.oxd-calendar-dropdown').children().contains('December').click()
+            cy.get('.oxd-calendar-selector-year').should('be.visible').click()
+            cy.get('.oxd-calendar-dropdown').children().contains('2022').click()
+            cy.get('.oxd-calendar-wrapper')
+                    .find('li')
+                    .then(($calendar) => { 
+                        if($calendar.text().includes('December')) {
+                            cy.log('December is selected')
+                        }
+                    }) 
                     cy.get('.oxd-calendar-wrapper')
                     .find('li')
                     .then(($calendar) => { 
-                        if($calendar.text().includes('February')) {
-                            cy.log('February is selected')
+                        if($calendar.text().includes('2022')) {
+                            cy.log('2022 is selected')
                         }
-                    }) 
-                } 
-            })
+                    })
             cy.get('.oxd-calendar-dates-grid').contains('23').click()
-            cy.get('.oxd-calendar-wrapper').should('not.exist')
-      //cy.contains('.orangehrm-timesheet-table-body' , 'No Records Found')
-      //.should('be.visible')
+
+            cy.get('#oxd-toaster_1') //asserting popup message
+            .should('be.hidden') // element is hidden
+            
+            .invoke('show')
+            cy.get('.oxd-toast').children()
+            .contains('InfoNo Records Found').should('be.visible')
+            //cy.get('.oxd-button').contains('Edit').should('exist').and('be.visible').click()
+           
+            
+                    
+           
       cy.get('.oxd-text').then(($text) => {
               if ($text.text().includes('No Timesheets Found')) 
               {
@@ -96,32 +105,12 @@ describe('Time', () => {
               //.next().type('2',{force:true})
               //.next().type('2',{force:true})
               //.next().type('2',{force:true})
-              //cy.get('.orangehrm-timesheet-table-body > :nth-child(1)')//.children().each((row) => {
-                //cy.wrap(row)
-                //cy.get('.oxd-input-group').should('exist').and('be.visible')
-                //.find('input')//.should('be.empty')
-                //.siblings()
-                //.first()
-                //.should('have.text', 'Nike testing app')
-                //.next()
-                //.invoke('show')
-                //.should('have.text', 'Testng the app')
-                //.next()
-                //.invoke('show')
-                //.type('2',{force:true})
-                //.next().type('2',{force:true})
-                //.next().type('2',{force:true})
-                //.next().type('2')
-                //.next().type('2')
-                //.next().type('2')
-               
-    
                 cy.get('.orangehrm-timesheet-table-body > :nth-child(1) > :nth-child(3)').type('2')
                 cy.get('.orangehrm-timesheet-table-body > :nth-child(1) > :nth-child(4)').type('2')
                 cy.get('.orangehrm-timesheet-table-body > :nth-child(1) > :nth-child(5)').type('2')
                 cy.get('.orangehrm-timesheet-table-body > :nth-child(1) > :nth-child(6)').type('2')
                 cy.get('.orangehrm-timesheet-table-body > :nth-child(1) > :nth-child(7)').type('2')
-                cy.get('.oxd-date-input').find('input').eq(0).click()
+                
     
 
 

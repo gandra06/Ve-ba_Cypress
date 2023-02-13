@@ -7,7 +7,7 @@ describe('Create system user', () => {
     it('adds new user', () => {
         const user = 'admin2'
         cy.intercept('GET', '/orangehrm/web/index.php/api/v2/admin/users?limit=50&offset=0&sortField=u.userName&sortOrder=ASC').as('adminUser')
-        cy.Login()
+        cy.loginForm()
         cy.get(sidebar.sidebarview,).find('a').contains('Admin').click()
         cy.wait('@adminUser')
         cy.get('button', { timeout: 10000 }).contains('Add').click()
@@ -32,5 +32,18 @@ describe('Create system user', () => {
         cy.get('.oxd-button--ghost').contains('Cancel').should('be.enabled')
         cy.get('.oxd-button--secondary').contains('Save').should('be.enabled').click()
         cy.get('orangehrm-container',{timeout:10000}).contains('admin2').should('be.visible')
+    })
+    it('adds new employee', () => {
+        const user = 'admin2'
+        cy.intercept('GET', '/orangehrm/web/index.php/api/v2/admin/users?limit=50&offset=0&sortField=u.userName&sortOrder=ASC').as('adminUser')
+        cy.loginForm()
+        cy.get(sidebar.sidebarview,).find('a').contains('PIM').click()
+        cy.get('button', { timeout: 10000 }).contains('Add').click()
+        cy.get('.oxd-grid-1 > .oxd-grid-item')
+        .find('input').first().type('Pera')
+        cy.get('.oxd-grid-1 > .oxd-grid-item')
+        .find('input').last().type('Peric')
+        cy.contains('button', 'Save').click()
+        
     })
 })

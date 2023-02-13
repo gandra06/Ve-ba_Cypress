@@ -21,8 +21,14 @@
   "homepage": "https://github.com/MandicZeljko/OrangeHRM#readme",
   "devDependencies": {
     "cypress": "^11.1.0",
+    "cypress-image-diff-js": "^1.23.0",
     "cypress-localstorage-commands": "^2.2.2",
+    "cypress-pipe": "^2.0.0",
     "cypress-xpath": "^2.0.1",
     "start-server-and-test": "^1.15.2"
+  },
+  "dependencies": {
+    "cypress-plugin-api": "^2.10.0",
+    "dayjs": "^1.11.7"
   }
 }
