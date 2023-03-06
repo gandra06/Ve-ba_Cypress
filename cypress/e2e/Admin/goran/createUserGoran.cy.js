@@ -1,3 +1,4 @@
+/// <reference types="Cypress" />
 import { sidebar } from '../../../support/POM/sidebar.cy'
 
 Cypress.on('uncaught:exception', (err, runnable) => {

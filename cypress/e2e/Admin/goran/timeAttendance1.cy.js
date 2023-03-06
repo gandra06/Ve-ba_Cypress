@@ -1,6 +1,5 @@
-//import { invoke } from "cypress/types/lodash"
+/// <reference types="Cypress" />
 
-//mport { find } from "cypress/types/lodash"
 
 Cypress.on('uncaught:exception', (err, runnable) => {
     return false

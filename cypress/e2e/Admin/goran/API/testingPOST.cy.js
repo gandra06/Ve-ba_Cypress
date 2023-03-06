@@ -1,3 +1,4 @@
+/// <reference types="Cypress" />
 import { dataAPI } from '../../../../fixtures/apiItems.json'
 import { login } from '../../../Login.cy'
 

@@ -1,7 +1,7 @@
 import { login } from '../../cypress/support/POM/Login.cy'
 import { sidebar } from'../../cypress/support/POM/sidebar.cy'
 import { hrmEditButton } from '../../cypress/support/POM/orangeHRMbtn.cy'
-
+require('cypress-downloadfile/lib/downloadFileCommand')
 //import "cypress-localstorage-commands";
 const compareSnapshotCommand = require('cypress-image-diff-js/dist/command')
 compareSnapshotCommand()
@@ -38,6 +38,7 @@ Cypress.Commands.add("Time", () => {
       .find('a')
       .contains('Time')
       .click()
+    cy.url().should('include', '/time/viewEmployeeTimesheet')
       
 });
 
@@ -46,7 +47,8 @@ Cypress.Commands.add("PIM", () => {
         .find('a')
         .contains('PIM')
         .click({force:true})
-      cy.contains('Add Employee').click()
+      cy.url().should('include', '/pim/viewEmployeeList')
+
 });
 
 Cypress.Commands.add("SelectEmployee", () => {
@@ -132,6 +134,10 @@ Cypress.Commands.add("loginAPI", () => {
   // Find element by selecting it's label
 Cypress.Commands.add("getSel", (labelText) => {
   cy.contains(labelText).parent().next().find('input')
+});
+  // Find Input field with inner text matching
+  Cypress.Commands.add("getInput", (labelText) => {
+  cy.contains(labelText).find('input')
 });
 
 // Get certain element by selecting it label with labelText

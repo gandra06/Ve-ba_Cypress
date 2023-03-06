@@ -1,12 +1,10 @@
 [
+   
     {
-        "url": "http://localhost/orangehrm/web/index.php/auth/login"
+        "url": "/web/index.php/dashboard/index"
     },
     {
-        "url": "http://localhost/orangehrm/web/index.php/dashboard/index"
-    },
-    {
-        "url": "http://localhost/orangehrm/web/index.php/time/viewEmployeeTimesheet"
+        "url": "/web/index.php/time/viewEmployeeTimesheet"
 
     }
     

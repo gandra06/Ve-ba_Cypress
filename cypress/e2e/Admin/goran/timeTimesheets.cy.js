@@ -1,3 +1,4 @@
+/// <reference types="Cypress" />
 //import { sidebar } from '../../../support/POM/sidebar.cy'
 import { hrmMsg } from '../../../support/POM/orangeHRMMsg.cy'
 import { hrmEditButton } from '../../../support/POM/orangeHRMbtn.cy'

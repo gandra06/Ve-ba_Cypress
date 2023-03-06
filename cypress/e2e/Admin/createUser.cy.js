@@ -1,3 +1,4 @@
+/// <reference types="Cypress" />
 import { sidebar } from '../../support/POM/sidebar.cy'
 
 Cypress.on('uncaught:exception', (err, runnable) => {
@@ -38,6 +39,7 @@ describe('Create system user', () => {
         cy.intercept('GET', '/orangehrm/web/index.php/api/v2/admin/users?limit=50&offset=0&sortField=u.userName&sortOrder=ASC').as('adminUser')
         cy.loginForm()
         cy.get(sidebar.sidebarview,).find('a').contains('PIM').click()
+        cy.wait('@adminUser')
         cy.get('button', { timeout: 10000 }).contains('Add').click()
         cy.get('.oxd-grid-1 > .oxd-grid-item')
         .find('input').first().type('Pera')
