@@ -15,7 +15,7 @@ describe('Api testing examples', () => {
             method:'POST',
             url: 'http://localhost/orangehrm/web/index.php/api/v2/pim/employees',
             headers: {
-                Cookie: '_orangehrm=egh3tauegok4f2s8vlpqh96mac'
+                Cookie: '_orangehrm=kk5bn0cn5pnf4m75j9ju02pejh'
             },
             body:{
                 "firstName": "Goran",

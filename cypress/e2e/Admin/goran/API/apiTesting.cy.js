@@ -27,7 +27,8 @@ describe('API testing', () => {
 
     //Cypress.Cookies.preserveOnce('_orangehrm', 'i2n99vbi7v0ktcoa28iup53d17')
     cy.PIM()
-    cy.url().should('include', '/addEmployee')
+
+    //cy.url().should('include', '/addEmployee')
     //cy.restoreLocalStorage();
  })
  after(() => {

@@ -65,8 +65,8 @@ module.exports = defineConfig({
     screenshotsFolder: 'cypress/screenshots',
     chromeWebSecurity: false,
     fixturesFolder: 'cypress/fixtures',
-    specPattern: 'cypress/e2e/bdd/bdd.feature',
-    //specPattern: 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}',
+    //specPattern: 'cypress/e2e/bdd/bdd.feature',
+    specPattern: 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}',
     supportFile: 'cypress/support/e2e.{js,jsx,ts,tsx}',
     
     trashAssetsBeforeRuns: true,

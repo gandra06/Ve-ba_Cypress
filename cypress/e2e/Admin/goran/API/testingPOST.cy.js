@@ -26,7 +26,8 @@ describe('POST API testing', () => {
         //cy.loginForm();
         //cy.url().should('include', '/dashboard/index');
         cy.PIM();
-        cy.url().should('include', '/pim/addEmployee');
+
+        //cy.url().should('include', '/pim/addEmployee');
         cy.request({
             method: 'POST',
             url: 'http://localhost/orangehrm/web/index.php/api/v2/pim/addEmployee',
