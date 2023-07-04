@@ -9,7 +9,7 @@ compareSnapshotCommand()
 Cypress.Commands.add('loginForm', () => {
   cy.clearCookies()
   cy.getCookies().should('be.empty')
-  cy.visit('/')
+  cy.visit('http://localhost/orangehrm/web/index.php/auth/login')
   onBeforeLoad: (win) => {
     win.sessionStorage.clear()
   }

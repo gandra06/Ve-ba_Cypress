@@ -19,7 +19,7 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 describe('API testing', () => {
    
  before(() => {
- cy.visit('/')
+ cy.visit('http://localhost/orangehrm/web/index.php/auth/login')
  cy.loginForm()
   })
   beforeEach(() => {
