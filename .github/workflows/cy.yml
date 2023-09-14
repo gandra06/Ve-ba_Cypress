@@ -22,7 +22,8 @@ jobs:
         uses: cypress-io/github-action@v5
         with:
           spec: cypress/e2e/googleGitActions/google.cy.js
-          - uses: actions/upload-artifact@v3                  
+          - uses: actions/upload-artifact@v3  
+          if: failure()                
            with:           
             name: cypress-screenshots
             path: cypress/screenshots
