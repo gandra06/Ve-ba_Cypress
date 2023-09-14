@@ -53,7 +53,7 @@ module.exports = defineConfig({
     pageLoadTimeout: 60000,
     requestTimeout: 10000,
     responseTimeout: 10000,
-    baseUrl: 'http://localhost/orangehrm',
+    //baseUrl: 'http://localhost/orangehrm',
     retries: {
       runMode: 0,
       openMode: 0,
