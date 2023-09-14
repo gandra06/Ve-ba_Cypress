@@ -1,6 +1,7 @@
 import { login } from '../../cypress/support/POM/Login.cy'
 import { sidebar } from'../../cypress/support/POM/sidebar.cy'
 import { hrmEditButton } from '../../cypress/support/POM/orangeHRMbtn.cy'
+//import '@testing-library/cypress/add-commands'
 require('cypress-downloadfile/lib/downloadFileCommand')
 //import "cypress-localstorage-commands";
 const compareSnapshotCommand = require('cypress-image-diff-js/dist/command')
@@ -9,7 +10,7 @@ compareSnapshotCommand()
 Cypress.Commands.add('loginForm', () => {
   cy.clearCookies()
   cy.getCookies().should('be.empty')
-  cy.visit('/')
+  cy.visit('/web/index.php/auth/login')
   onBeforeLoad: (win) => {
     win.sessionStorage.clear()
   }

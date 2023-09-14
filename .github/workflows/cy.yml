@@ -1,0 +1,10 @@
+name: End to en testing
+on: [push]
+jobs:
+ cypress-run:
+  runs-on: windows latest
+  steps:
+   -name: Checkout
+    uses: actions/checkout@v3
+   -name: Cypress run
+    uses: cypress-io/github-actions@v5

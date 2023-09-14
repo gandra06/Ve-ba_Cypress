@@ -6,7 +6,7 @@ describe('API testing', () => {
 
 
     it('GET testing TimesheetAPI', () => {
-        cy.visit('/')
+        cy.visit('http://localhost/orangehrm')
         cy.loginForm()
         
         cy.request({
