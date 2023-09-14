@@ -15,10 +15,9 @@ jobs:
 
       - name: Install Dependencies
         run: npm install
-      - name: Cypress run
-        uses: cypress-io/github-action@v5
-        with: 
-          spec: cypress/e2e/googleGitActions/google.cy.js
+     - name: Run Cypress Test
+        run: npx cypress run --spec "cypress/e2e/googleGitActions/google.cy.js"
+
           - uses: actions/upload-artifact@v3
 
         with:
