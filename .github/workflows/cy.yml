@@ -1,34 +1,34 @@
-name: Google - Git Action testing
-on: push
+name: Google
+on:
+  push:
+    branches:
+      - Cypress
+
 jobs:
   build:
     runs-on: windows-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      # Install npm dependencies, cache them correctly
-      # and run all Cypress tests
+
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: '18'
 
       - name: Install Dependencies
         run: npm install
-     - name: Run Cypress Test
+
+      - name: Run Cypress Test
         run: npx cypress run --spec "cypress/e2e/googleGitActions/google.cy.js"
-
-          - uses: actions/upload-artifact@v3
-
-        with:
-          name: cypress-videos
-          path: cypress/videos
+      - uses: actions/upload-artifact@v3                  
+        with:           
+          name: cypress-screenshots
+          path: cypress/screenshots
           if-no-files-found: ignore
 
       - uses: actions/upload-artifact@v3
-        # add the line below to store screenshots only on failures
-        # if: failure()
         with:
-          name: cypress-screenshots
-          path: cypress/screenshots
+          name: cypress-videos
+          path: cypress/videos
           if-no-files-found: ignore
