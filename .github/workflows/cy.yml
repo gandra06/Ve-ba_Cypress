@@ -19,4 +19,25 @@ jobs:
       - name: Run Cypress Test
         run: npx cypress run --spec "cypress/e2e/googleGitActions/google.cy.js
       
-        
+      - uses: actions/upload-artifact@v3                  
+
+        with:            
+
+          name: cypress-screenshots
+
+          path: cypress/screenshots
+
+          if-no-files-found: ignore
+
+
+
+
+      - uses: actions/upload-artifact@v3
+
+        with:
+
+          name: cypress-videos
+
+          path: cypress/videos
+
+          if-no-files-found: ignore
