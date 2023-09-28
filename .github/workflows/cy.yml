@@ -1,9 +1,11 @@
 name: Google git action
 on: push
+  branches:
+  - Cypress
    
 
 jobs:
-  cypress run:
+  build:
     runs-on: windows-latest
     steps:
       - name: Checkout
