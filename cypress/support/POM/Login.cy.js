@@ -19,7 +19,9 @@ const login = {
     loginForgot : '.orangehrm-login-forgot > .oxd-text',
     copyright : '.orangehrm-copyright-wrapper > :nth-child(1)',
     copyrightSecondLine : '.orangehrm-copyright-wrapper > :nth-child(2)',
-    orange : '[href="http://www.orangehrm.com"]'
+    orange : '[href="http://www.orangehrm.com"]',
+    logedInBtn : '.oxd-userdropdown-tab > .oxd-icon',
+    logOutBtn : ':nth-child(4) > .oxd-userdropdown-link'
 
 }
 export { login }
