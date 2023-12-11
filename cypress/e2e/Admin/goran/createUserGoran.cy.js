@@ -1,5 +1,5 @@
 /// <reference types="Cypress" />
-import { sidebar } from '../../../support/POM/sidebar.cy'
+import { sidebar } from '../../../support/POM/sidebar.cy.js'
 
 Cypress.on('uncaught:exception', (err, runnable) => {
     return false

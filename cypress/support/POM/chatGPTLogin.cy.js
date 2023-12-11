@@ -1,8 +1,8 @@
 const login = {
-    username : '.oxd-form-row:nth-child(2)',
-    password : '.oxd-form-row:nth-child(3)',
-    login : '.oxd-button',
-    requiredNotification : '.oxd-text',
+    username: '.oxd-form-row:nth-child(2)',
+    password: '.oxd-form-row:nth-child(3)',
+    login: '.oxd-button',
+    requiredNotification: '.oxd-text',
     text : '.oxd-text',
     alert : '.oxd-alert',
     logo : '.orangehrm-login-branding > img',
@@ -22,6 +22,7 @@ const login = {
     orange : '[href="http://www.orangehrm.com"]',
     logedInBtn : '.oxd-userdropdown-tab > .oxd-icon',
     logOutBtn : ':nth-child(4) > .oxd-userdropdown-link'
+    // ... ostali selektori
+};
 
-}
-export { login }
+export { login };

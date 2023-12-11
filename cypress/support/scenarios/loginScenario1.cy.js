@@ -14,35 +14,27 @@ export default class LoginScenario {
 
    
     execute() {
-        cy.visit('http://localhost/orangehrm/web/index.php/auth/login');
-        cy.get('.orangehrm-login-logo').should('be.visible');
-        if (this.userName === '') {
-            if (this.password === '') {
-                cy.get(login.login).contains('Login').click();
-    
-                cy.url().should('include', '/login')
-    
-            cy.get('.oxd-text').contains('Required').should('be.visible')
-            } else {
-         cy.get(login.password).type(this.password);
-         cy.get(login.login).contains('Login').click(); 
-            }
+        cy.visit('http://localhost/orangehrm/web/index.php/auth/login')
+        cy.get(login.loginLogo).should('be.visible')
+        if (this.userName !== '') {
+            
+        cy.get(login.username).type(this.userName)
+
         }
-         else {
-        cy.get(login.username).type(this.userName);
-            }
+        if (this.password !== '') {
+            
+        cy.get(login.password).type(this.password)
+
+        }
+        cy.get(login.login).contains('Login').click()
         
-        if (this.password === '') {
-            cy.get(login.login).contains('Login').click();
+           
+        if (this.userName === '' || this.password === '') {
 
-            cy.url().should('include', '/login')
+        cy.url().should('include', '/login') 
+        cy.get(login.requiredNotification).contains('Required').should('be.visible')
 
-           cy.get('.oxd-input-group > .oxd-text').contains('Required').should('be.visible')
-        } else {
-           cy.get(login.password).type(this.password);
-           cy.get(login.login).contains('Login').click();
-
-          }
+        }
     }
 
 

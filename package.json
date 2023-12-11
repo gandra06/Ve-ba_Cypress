@@ -41,8 +41,10 @@
     "start-server-and-test": "^1.15.2"
   },
   "dependencies": {
+    "bundletool": "^1.1.7",
     "cypress-plugin-api": "^2.10.0",
     "dayjs": "^1.11.7",
+    "ffmpeg": "^0.0.4",
     "typescript": "^4.9.5"
   },
   "cypress-cucumber-preprocessor": {

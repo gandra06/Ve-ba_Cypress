@@ -158,6 +158,10 @@ Cypress.Commands.add("inputField", (labelText, whatever) => {
   cy.contains(labelText).parent().next().find('input').type(whatever)
 });
 
+Cypress.Commands.add("clickButton", (labelText) => {
+cy.get('button').contains(labelText).click()
+});
+
 // Chose certain offer in drop-down meny
 Cypress.Commands.add("choseSelect", (labelText, text) => {
   cy.contains(labelText).parent().next().children().children().children().eq(1).click({force:true})

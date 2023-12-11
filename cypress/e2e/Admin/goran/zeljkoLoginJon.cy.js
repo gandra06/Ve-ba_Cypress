@@ -1,6 +1,7 @@
 /// <reference types="Cypress" />
 import LoginScenario from "../../../support/scenarios/loginScenario1.cy"
-//import employee from "../../fixtures/example.json"
+import { login } from "../../../support/POM/Login.cy"
+
 
 
 Cypress.on('uncaught:exception', (err, runnable) => {
@@ -33,17 +34,32 @@ describe('Login procedure with admin', () => {
 
             cy.url().then(($url) => {
                 cy.wait(1000)
-                cy.log($url)
+                
                 if ($url.includes('/dashboard/')) {
+                    cy.log('SVE JE OK!')
                     cy.get(login.logedInBtn).click()
                     cy.wait(1000)
                     cy.get(login.logOutBtn).click()
                 } 
-                 else {
-                    cy.log('SVE OK')
-                 }
+                if ($url.includes('/login')) {
+                    //asertovati pogrešne podatke
+               cy.get(login.requiredNotification).then(($requiredNotification) => {
+                const notificationText = $requiredNotification.text()
+                if (notificationText.includes('Invalid credentials')) {
+        
+                    cy.log('UNETI PODACI SU POGRESNI!')
+                }
+                //aserovati prazna polja
+                else if (notificationText.includes('Required')) {
+                 
+                    cy.log('OBAVENA POLJA NE MOGU BITI PRAZNA')
+                 
+                }
+               })
 
-            });
+                }  
+
+            })
  
         }
 
